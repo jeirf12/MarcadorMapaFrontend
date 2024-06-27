@@ -4,8 +4,11 @@ export class Popup {
 
   metodo: string;
 
+  esEliminar: boolean;
+
   constructor() {
     this.estado = false;
     this.metodo = '';
+    this.esEliminar = false;
   }
 }

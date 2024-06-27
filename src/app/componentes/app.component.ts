@@ -102,6 +102,7 @@ export class AppComponent implements OnInit {
     this.descripcion = marcadorSeleccionado.descripcion;
     this.estado.estado = true;
     this.esEliminar = esEliminar;
+    this.estado.esEliminar = this.esEliminar;
   }
 
   cambiarEstado(estado: Popup) {
