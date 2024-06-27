@@ -1,0 +1,58 @@
+<google-map
+  width="100vw"
+  height="100vh"
+  [options]="opcionesMapa"
+  (mapClick)="agregarMarcador($event)"
+>
+  @for (marcador of marcadores; track marcador.id) {
+  <map-marker
+    (mapMouseover)="mostrarInformacion(marcador, true)"
+    (mapMouseout)="mostrarInformacion(marcador, false)"
+    (mapRightclick)="seleccionarMarcador(marcador, true)"
+    (mapClick)="seleccionarMarcador(marcador)"
+    [position]="{ lat: +marcador.latitud, lng: +marcador.longitud }"
+    [options]="opcionesMarcador"
+  />
+  }
+</google-map>
+
+<app-popup
+  [estado]="estado"
+  (estadoCambiado)="cambiarEstado($event)"
+  [titulo]="esEliminar ? 'Eliminar marcador' : esCrear ? 'Crear Marcador' : 'Editar Marcador'"
+>
+  @if(esEliminar) {
+  <p>¿Desea eliminar el marcador {{ marcadorSeleccionado.nombre }}?</p>
+  } @else {
+  <form nz-form nzLayout="vertical">
+    <nz-form-item>
+      <nz-form-label nzRequired>
+        <nz-form-text>Nombre del marcador</nz-form-text>
+      </nz-form-label>
+      <nz-form-control>
+        <input
+          nz-input
+          nzSize="large"
+          name="nombre"
+          [(ngModel)]="nombre"
+        />
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label nzRequired>
+        <nz-form-text>Descripción del marcador</nz-form-text>
+      </nz-form-label>
+      <nz-form-control>
+        <input
+          nz-input
+          nzSize="large"
+          name="descripcion"
+          [(ngModel)]="descripcion"
+        />
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+  }
+</app-popup>
+<app-mostrarinformacion [visible]="esVer" [marcador]="marcadorSeleccionado">
+</app-mostrarinformacion>

@@ -1,0 +1,5 @@
+<nz-modal nzCentered [nzWidth]="800" [(nzVisible)]="estado.estado" [nzTitle]="titulo" (nzOnCancel)="cancelar()" (nzOnOk)="confirmar()" [nzFooter]="''">
+  <ng-container *nzModalContent>
+    <ng-content></ng-content>
+  </ng-container>
+</nz-modal>

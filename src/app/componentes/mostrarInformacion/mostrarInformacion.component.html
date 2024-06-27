@@ -1,0 +1,8 @@
+<div [nzTooltipVisible]="visible" nz-tooltip [nzTooltipTitle]="titleTemplate">
+</div>
+<ng-template #titleTemplate>
+  <p>Nombre: {{marcador.nombre}}</p>
+  <p>Descripción: {{marcador.descripcion}}</p>
+  <p>Longitud: {{marcador.longitud}}</p>
+  <p>Latitud: {{marcador.latitud}}</p>
+</ng-template>
